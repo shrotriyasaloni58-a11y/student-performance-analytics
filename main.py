@@ -4,13 +4,9 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("Student.csv")
 
-df["Total"] = (
-    df["Python"]
-    + df["Statistics"]
-    + df["Mathematics"]
-)
-
-df["Average"] = df["Total"] / 3
+marks = df[["Python", "Statistics", "Mathematics"]].to_numpy()
+df["Total"] = np.sum(marks, axis=1)
+df["Average"] = np.mean(marks, axis=1)
 
 print(df)
 
